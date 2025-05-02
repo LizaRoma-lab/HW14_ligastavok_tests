@@ -18,6 +18,7 @@ public class BreadcrumbsTest{
         $(".breadcrumbs__crumb_WLni", 1).shouldHave(text("Футбол"));
         $(".breadcrumbs__crumb_WLni", 2).shouldHave(text("Россия"));
         $(".breadcrumbs__crumb_WLni", 3).shouldHave(text("Первая лига"));
+        sleep(5000);
     }
 }
 

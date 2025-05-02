@@ -10,15 +10,15 @@ import static com.codeborne.selenide.Selenide.*;
 public class SearchTest {
 
     @ValueSource(strings = {
-            "Пегула",
-            "Рыбакина",
-            "Джумхур"
+            "Соболенко",
+            "Атман",
+            "Качмазов"
     })
     @ParameterizedTest
     void successfulSearchTest(String searchQuery) {
         open("https://www.ligastavok.ru/");
         $(".search-U5Xg").click();
-        $(".base-input__component-input_x7-l.md_MQ1k").setValue(searchQuery);
+        $(".base-input__component-input_yDi9.sm_Rp8N").setValue(searchQuery);
         $(".team-name_Tw9j").shouldHave(text(searchQuery));
 
     }

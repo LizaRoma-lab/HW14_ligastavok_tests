@@ -1,5 +1,11 @@
 package ru.ligastavok;
 
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Step;
+import io.qameta.allure.Story;
+import io.qameta.allure.selenide.AllureSelenide;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 
@@ -16,7 +22,12 @@ public class RegistrationWithPageObjectsTest extends TestBase {
             valueResult = "Подтвердите номер телефона";
 
     @Test
-    void fillFormTest() {
+    @Story("Поиск")
+    @DisplayName("Позитивные тесты на поиск")
+    @Owner("emromanova")
+    void fillFormWithFakeDataTest() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
+
         registrationPage.openPage()
                 .setMobilePhone(userNumber)
                 .setBirthDate(userDateOfBirth)
