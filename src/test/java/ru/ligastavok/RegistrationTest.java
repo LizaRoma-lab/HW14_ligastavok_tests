@@ -13,14 +13,14 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 
-public class RegistrationTest {
-    @BeforeAll
-    static void beforeAll() {
-        //Configuration.browserSize = "1920x1080";
-        Configuration.baseUrl = "https://www.ligastavok.ru";
-        Configuration.pageLoadStrategy = "eager";
-        Configuration.timeout = 5000; // default 4000
-    }
+public class RegistrationTest extends TestBase {
+//    @BeforeAll
+//    static void beforeAll() {
+//        //Configuration.browserSize = "1920x1080";
+//        Configuration.baseUrl = "https://www.ligastavok.ru";
+//        Configuration.pageLoadStrategy = "eager";
+//        Configuration.timeout = 5000; // default 4000
+//    }
 
     @Test
     public void fillFormTest() {

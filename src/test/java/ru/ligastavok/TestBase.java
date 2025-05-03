@@ -1,6 +1,7 @@
 package ru.ligastavok;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 
@@ -17,5 +18,6 @@ public class TestBase {
     @AfterEach
     void tearDown() {
         closeWebDriver();
+        Selenide.closeWebDriver();
     }
 }

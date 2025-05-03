@@ -6,7 +6,7 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 
 
-public class InfoAboutCompanyTest {
+public class InfoAboutCompanyTest extends TestBase {
     @Test
     void successfulAboutCompanyTest() {
         open("https://www.ligastavok.ru/");

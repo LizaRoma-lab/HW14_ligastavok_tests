@@ -22,9 +22,7 @@ public class RegistrationWithPageObjectsTest extends TestBase {
             valueResult = "Подтвердите номер телефона";
 
     @Test
-    @Story("Поиск")
-    @DisplayName("Позитивные тесты на поиск")
-    @Owner("emromanova")
+
     void fillFormWithFakeDataTest() {
         SelenideLogger.addListener("allure", new AllureSelenide());
 
