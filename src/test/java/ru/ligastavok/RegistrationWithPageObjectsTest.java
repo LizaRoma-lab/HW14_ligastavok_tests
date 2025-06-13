@@ -1,13 +1,10 @@
 package ru.ligastavok;
 
-import com.codeborne.selenide.logevents.SelenideLogger;
-import io.qameta.allure.Owner;
-import io.qameta.allure.Step;
-import io.qameta.allure.Story;
-import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
+
+import static io.qameta.allure.Allure.step;
 
 public class RegistrationWithPageObjectsTest extends TestBase {
 
@@ -22,19 +19,35 @@ public class RegistrationWithPageObjectsTest extends TestBase {
             valueResult = "Подтвердите номер телефона";
 
     @Test
-
+    @DisplayName("Проверка регистрации пользователя с фейковыми данными")
     void fillFormWithFakeDataTest() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
+        //SelenideLogger.addListener("allure", new AllureSelenide());
 
-        registrationPage.openPage()
-                .setMobilePhone(userNumber)
-                .setBirthDate(userDateOfBirth)
-                .setEmail(userEmail)
-                .setPassword(userPassword)
-                .setAgeOfMajority()
-                .clickContinueButton();
-
-        registrationPage.setCheckResult(valueResult);
-
+        step("Открываем страницу регистрации", () -> {
+            registrationPage.openPage();
+        });
+        step("Заполняем форму регистрации", () -> {
+            step("Вводим номер телефона: " + userNumber, () -> {
+                registrationPage.setMobilePhone(userNumber);
+            });
+            step("Вводим дату рождения: " + userDateOfBirth, () -> {
+                registrationPage.setBirthDate(userDateOfBirth);
+            });
+            step("Вводим email: " + userEmail, () -> {
+                registrationPage.setEmail(userEmail);
+            });
+            step("Вводим пароль", () -> {
+                registrationPage.setPassword(userPassword);
+            });
+            step("Подтверждаем совершеннолетие", () -> {
+                registrationPage.setAgeOfMajority();
+            });
+        });
+        step("Нажимаем кнопку 'Продолжить'", () -> {
+            registrationPage.clickContinueButton();
+        });
+        step("Проверяем результат регистрации", () -> {
+            registrationPage.setCheckResult(valueResult);
+        });
     }
 }

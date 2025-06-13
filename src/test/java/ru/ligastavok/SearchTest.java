@@ -8,25 +8,34 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
+import static io.qameta.allure.Allure.step;
+
 
 public class SearchTest extends TestBase {
     @Story("Поиск")
-    @DisplayName("Позитивные тесты на поиск")
+    @DisplayName("Позитивные тесты на ")
     @Owner("emromanova")
     @ValueSource(strings = {
-            "Рууд",
-            "Буциге",
-            "Мочизуки"
+            "Мертенс",
+            "Йович",
+            "Оже"
     })
-    @ParameterizedTest
+    @ParameterizedTest(name = "Поиск игрока по имени: {0}")
     void successfulSearchTest(String searchQuery) {
-        open("https://www.ligastavok.ru/");
-        $(".search-U5Xg").click();
-        $(".base-input__component-input_yDi9.sm_Rp8N").setValue(searchQuery);
-        $(".team-name_Tw9j").shouldHave(text(searchQuery));
-
+        step("Открываем главную страницу Лиги Ставок", () -> {
+            open("https://www.ligastavok.ru/");
+        });
+        step("Открываем поле поиска", () -> {
+            $(".search-U5Xg").click();
+        });
+        step("Вводим поисковый запрос: '" + searchQuery + "'", () -> {
+            $(".base-input__component-input_yDi9.sm_Rp8N").setValue(searchQuery);
+        });
+        step("Проверяем результаты поиска", () -> {
+            $(".team-name_Tw9j").shouldHave(text(searchQuery));
+        });
     }
-
 }
 

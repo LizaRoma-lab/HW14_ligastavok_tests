@@ -1,7 +1,10 @@
 package ru.ligastavok;
 
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.WebDriverRunner;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import helpers.Attach;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -18,6 +21,7 @@ public class TestBase {
         Configuration.baseUrl = "https://www.ligastavok.ru";
         Configuration.pageLoadStrategy = "eager";
     }
+
     @BeforeEach
     void setUp() {
         Configuration.browserCapabilities = new ChromeOptions().addArguments(
@@ -26,11 +30,19 @@ public class TestBase {
                 "--remote-allow-origins=*",
                 "--user-data-dir=/tmp/chrome-profile-" + UUID.randomUUID()  // Динамический путь
         );
-        Configuration.remote = "https://user1:1234@selenoid.autotest.cloud/wd/hub";
+
+        System.setProperty("selenide.remote", "http://localhost:4444/wd/hub");
+        SelenideLogger.addListener("allure", new AllureSelenide());
     }
 
     @AfterEach
-    void tearDown() {
-        Selenide.closeWebDriver();
+    void addAttachments() {
+        if (WebDriverRunner.hasWebDriverStarted()) {  // Проверяем, что драйвер существует
+            Attach.screenshotAs("Last screenshot");
+            Attach.pageSource();
+            Attach.browserConsoleLogs();
+            Attach.addVideo();
+        }
+        closeWebDriver();
     }
 }
