@@ -18,9 +18,9 @@ public class SearchTest extends TestBase {
     @DisplayName("Позитивные тесты на ")
     @Owner("emromanova")
     @ValueSource(strings = {
-            "Мертенс",
-            "Йович",
-            "Оже"
+            "Зверев",
+            "Крюгер",
+            "Смит"
     })
     @ParameterizedTest(name = "Поиск игрока по имени: {0}")
     void successfulSearchTest(String searchQuery) {

@@ -49,22 +49,19 @@ allure serve build/allure-results
 - 📈 [Allure Report](https://jenkins.autotests.cloud/job/HW14_ligastavok/allure/)
 
 ### Успешный тест:
-<img src="media/success.png" alt="Успешный тест" width="834"/>
+<img src="media/success.jpg" alt="Успешный тест" width="834"/>
 
 ### Упавший тест:
-<img src="media/fail.png" alt="Упавший тест" width="834"/>
+<img src="media/fail.jpg" alt="Упавший тест" width="834"/>
 
 ### 🎞 Видео прохождения теста
-<img src="media/test-example.gif" alt="Видео прохождения теста" width="1920"/>
+<img src="https://skrinshoter.ru/vW7eAWcsNDO" alt="Видео прохождения теста" width="1920"/>
 
 
 Процесс реализован в Jenkins и включает:
 
 - ✅ Отчёт Allure
 - ✅ Telegram-уведомления
-
-### Скриншот пайплайна:
-<img src="media/jenkins.png" alt="Jenkins" width="1444"/>
 
 ## 📬 Уведомления в Telegram
 
@@ -73,7 +70,7 @@ allure serve build/allure-results
 - общее количество тестов
 - количество упавших
 - ссылка на Allure-отчёт
-  <img src="media/telegram-report.png" alt="Telegram Report"/>
+  <img src="media/telegram-report.jpg" alt="Telegram Report"/>
 
 ## 👤 Автор
 

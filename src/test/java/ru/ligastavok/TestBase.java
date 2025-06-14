@@ -20,20 +20,24 @@ public class TestBase {
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://www.ligastavok.ru";
         Configuration.pageLoadStrategy = "eager";
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+    //    Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
     }
 
     @BeforeEach
     void setUp() {
-        Configuration.browserCapabilities = new ChromeOptions().addArguments(
-                "--no-sandbox",
-                "--disable-dev-shm-usage",
-                "--remote-allow-origins=*",
-                "--user-data-dir=/tmp/chrome-profile-" + UUID.randomUUID()  // Динамический путь
-        );
-
+//        Configuration.browserCapabilities = new ChromeOptions().addArguments(
+//                "--no-sandbox",
+//                "--disable-dev-shm-usage",
+//                "--remote-allow-origins=*",
+//                "--user-data-dir=/tmp/chrome-profile-" + UUID.randomUUID()  // Динамический путь
+//        );
+//
         System.setProperty("selenide.remote", "http://localhost:4444/wd/hub");
-        SelenideLogger.addListener("allure", new AllureSelenide());
+//        Configuration.remote = "http://localhost:4444/wd/hub";
+//        Configuration.browserCapabilities = new ChromeOptions();
+//        Configuration.browserCapabilities.setCapability("enableVideo", true);
+//        Configuration.browserCapabilities.setCapability("enableVNC", true);
+        SelenideLogger.addListener("allure", new AllureSelenide()); //верхние 4 строчки нужно будет удалить
     }
 
     @AfterEach
