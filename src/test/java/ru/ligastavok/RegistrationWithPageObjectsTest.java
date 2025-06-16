@@ -3,6 +3,7 @@ package ru.ligastavok;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
+import testutils.FakeData;
 
 import static io.qameta.allure.Allure.step;
 

@@ -1,4 +1,4 @@
-package ru.ligastavok;
+package testutils;
 
 import com.github.javafaker.Faker;
 
