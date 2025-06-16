@@ -9,7 +9,7 @@ public class FakeData {
     Faker faker = new Faker(new Locale("en-GB"));
     SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
 
-    String userNumber = faker.phoneNumber().subscriberNumber(10),
+    public String userNumber = faker.phoneNumber().subscriberNumber(10),
             userDateOfBirth = formatter.format(faker.date().birthday()),
             userEmail = faker.internet().emailAddress(),
             userPassword = faker.internet()
