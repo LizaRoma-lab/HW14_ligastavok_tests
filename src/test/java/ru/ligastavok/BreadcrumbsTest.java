@@ -13,7 +13,7 @@ public class BreadcrumbsTest extends TestBase {
     @DisplayName("Проверка отображения хлебных крошек")
     void successfulBreadcrumbsTest() {
         step("Открываем главную страницу", () -> {
-            open("https://www.ligastavok.ru/");
+            open("/");
         });
         step("Переходим в каталог", () -> {
             $(".desktop-catalogue-switcher-uKF9").click();

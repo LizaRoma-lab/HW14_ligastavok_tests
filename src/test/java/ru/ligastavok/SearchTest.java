@@ -25,7 +25,7 @@ public class SearchTest extends TestBase {
     @ParameterizedTest(name = "Поиск игрока по имени: {0}")
     void successfulSearchTest(String searchQuery) {
         step("Открываем главную страницу Лиги Ставок", () -> {
-            open("https://www.ligastavok.ru/");
+            open("/");
         });
         step("Открываем поле поиска", () -> {
             $(".search-U5Xg").click();

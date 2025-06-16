@@ -18,7 +18,6 @@ public class RegistrationTest extends TestBase {
     @Test
     @DisplayName("Проверка регистрации пользователя")
     public void fillFormTest() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
         step("Открываем страницу регистрации", () -> {
             open("/registration");
         });

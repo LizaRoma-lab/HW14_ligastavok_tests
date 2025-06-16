@@ -1,54 +1,43 @@
 package ru.ligastavok;
 
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 import testutils.FakeData;
 
-import static io.qameta.allure.Allure.step;
 
+@Feature("Регистрация пользователя")
+@Story("Регистрация с фейковыми данными")
 public class RegistrationWithPageObjectsTest extends TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
-
     FakeData fakeData = new FakeData();
 
-    String userEmail = fakeData.userEmail,
-            userNumber = fakeData.userNumber,
-            userDateOfBirth = fakeData.userDateOfBirth,
-            userPassword = fakeData.userPassword,
-            valueResult = "Подтвердите номер телефона";
+    String userEmail = fakeData.userEmail;
+    String userNumber = fakeData.userNumber;
+    String userDateOfBirth = fakeData.userDateOfBirth;
+    String userPassword = fakeData.userPassword;
+    String valueResult = "Подтвердите номер телефона";
 
     @Test
     @DisplayName("Проверка регистрации пользователя с фейковыми данными")
     void fillFormWithFakeDataTest() {
-        //SelenideLogger.addListener("allure", new AllureSelenide());
+        // Открытие страницы
+        registrationPage.openPage();
 
-        step("Открываем страницу регистрации", () -> {
-            registrationPage.openPage();
-        });
-        step("Заполняем форму регистрации", () -> {
-            step("Вводим номер телефона: " + userNumber, () -> {
-                registrationPage.setMobilePhone(userNumber);
-            });
-            step("Вводим дату рождения: " + userDateOfBirth, () -> {
-                registrationPage.setBirthDate(userDateOfBirth);
-            });
-            step("Вводим email: " + userEmail, () -> {
-                registrationPage.setEmail(userEmail);
-            });
-            step("Вводим пароль", () -> {
-                registrationPage.setPassword(userPassword);
-            });
-            step("Подтверждаем совершеннолетие", () -> {
-                registrationPage.setAgeOfMajority();
-            });
-        });
-        step("Нажимаем кнопку 'Продолжить'", () -> {
-            registrationPage.clickContinueButton();
-        });
-        step("Проверяем результат регистрации", () -> {
-            registrationPage.setCheckResult(valueResult);
-        });
+        // Заполнение формы
+        registrationPage.setMobilePhone(userNumber);
+        registrationPage.setBirthDate(userDateOfBirth);
+        registrationPage.setEmail(userEmail);
+        registrationPage.setPassword(userPassword);
+        registrationPage.setAgeOfMajority();
+
+        // Подтверждение
+        registrationPage.clickContinueButton();
+
+        // Проверка результата
+        registrationPage.setCheckResult(valueResult);
     }
 }

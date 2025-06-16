@@ -14,7 +14,7 @@ public class InfoAboutCompanyTest extends TestBase {
     @DisplayName("Проверка отображения раздела 'О компании'")
     void successfulAboutCompanyTest() {
         step("Открываем главную страницу", () -> {
-            open("https://www.ligastavok.ru/");
+            open("/");
         });
         step("Переходим в личный кабинет", () -> {
             $("[data-l-id='nav-menu-profile']").click();
